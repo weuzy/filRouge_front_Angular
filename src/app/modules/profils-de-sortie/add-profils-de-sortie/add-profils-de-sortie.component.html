@@ -1,0 +1,25 @@
+<div class="mat-elevation-z8" *ngIf="profilDeSortie">
+  <div class="titl">
+    <h1>{{panelTitle}} d'un profil de sortie</h1>
+    <div class="clos">
+      <a routerLink="/home/profDeSorties" mat-icon-button>
+        <mat-icon>highlight_off</mat-icon>
+      </a>
+    </div>
+  </div>
+  <mat-card class="example-card">
+    <form [formGroup]="myForm">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="libelle" [(ngModel)]="profilDeSortie.libelle" formControlName="libelle">
+        <mat-error>Le libellé est obligatoire!!</mat-error>
+      </mat-form-field>
+    </form>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <a mat-stroked-button class="mat-elevation-z6" color="accent" (click)="saveProfilDeSortie()"><mat-icon class="mat-18">edit</mat-icon>Enregistrer</a>
+      <button mat-stroked-button class="mat-elevation-z6" style="color: #6CCAF0" (click)="myForm.reset()"><mat-icon>settings_backup_restore</mat-icon>Reset</button>
+    </div>
+
+  </mat-card>
+</div>
+
+

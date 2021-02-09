@@ -1,0 +1,38 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+  <div  fxFlex="100">
+    <div style="background-color:#f44336;padding: 12px;">
+      <h1>Liste des profils</h1>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <button mat-flat-button style="color: #f44336" routerLink="edit/0" class="mat-elevation-z6">
+          add profil de sortie
+          <mat-icon>how_to_reg</mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-card class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="libelle">
+          <th mat-header-cell *matHeaderCellDef> Libelle </th>
+          <td mat-cell *matCellDef="let profSortie"> {{profSortie.libelle}} </td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell class="flex-space-between" *matCellDef="let profSortie">
+            <a mat-button color="accent" (click)="editPro(profSortie.id)">
+              <mat-icon class="mat-18">edit</mat-icon><small>modifier</small>
+            </a>
+            <button mat-button color="warn" (click)="deletePro(profSortie.id)">
+              <mat-icon class="mat-18">delete</mat-icon><small>supprimer</small>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card>
+  </div>
+  <div fxFlex="30">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

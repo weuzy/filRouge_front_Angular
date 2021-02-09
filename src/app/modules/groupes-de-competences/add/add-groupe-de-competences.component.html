@@ -1,0 +1,67 @@
+ <div class="mat-elevation-z8" *ngIf="grpCompet">
+    <div class="titl">
+        <h1>{{ panelTitle }} d'un groupe de compétences</h1>
+        <div class="clos">
+            <a
+                routerLink="/home/grpCompetences"
+                mat-icon-button
+            >
+                <mat-icon>highlight_off</mat-icon>
+            </a>
+        </div>
+    </div>
+    <mat-card>
+        <form
+            class="example-form"
+            [formGroup]="form"
+        >
+            <mat-form-field class="full-width-input" color="warn">
+                <input
+                    matInput
+                    placeholder="libellé"
+                    formControlName="libelle"
+                    [(ngModel)]="grpCompet.libelle"
+                >
+                <mat-error>le libellé est obligatoire</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input" color="warn">
+                <mat-label>Descriptif</mat-label>
+                <textarea
+                    matInput
+                    formControlName="descriptif"
+                    placeholder="Ex. 100 Main St"
+                    [(ngModel)]="grpCompet.descriptif"
+                ></textarea>
+                <mat-error>Le descriptif est obligatoire</mat-error>
+            </mat-form-field>
+
+          <mat-form-field class="example-chip-list" color="warn">
+            <mat-chip-list #chipList>
+              <mat-chip *ngFor="let competence of competences;let indx=index;" [selectable]="selectable" [removable]="removable" (removed)="remove(competence,indx)">
+                {{competence.libelle}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input placeholder="Competences..." #competenceInput formControlName="competenceCtrl" [formControl]="competenceCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-error>Assigner ua minimum une compétence</mat-error>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let competence of filteredCompetences | async" [value]="competence">
+                {{competence.libelle}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+            <button
+                mat-stroked-button
+                color="warn"
+                class="mat-elevation-z6"
+                (click)="saveGroupeDeCompetence()"
+            >
+                Soumettre
+            </button>
+          <button mat-flat-button style="color: #6CCAF0" (click)="form.reset()"><mat-icon>settings_backup_restore</mat-icon>Reset</button>
+        </form>
+    </mat-card>
+</div>

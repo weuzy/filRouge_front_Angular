@@ -1,0 +1,114 @@
+<mat-toolbar color="warn"  class="mat-elevation-z2" [style.margin-bottom]="'2px'" > <!-- style="background-color:#880e4f;" -->
+  <mat-toolbar-row>
+    <button mat-button (click)="toggleSideBar()">
+      <mat-icon>menu</mat-icon>
+      <span mat-button>#19weuzy</span>
+    </button>
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+      <ul fxLayout="row" fxLayoutGap="20px">
+        <li *ngIf="!deviceXs">
+          <button mat-button  [matMenuTriggerFor]="personMenu">
+            <mat-icon>people</mat-icon>
+            Users
+          </button>
+          <mat-menu #personMenu="matMenu">
+            <button mat-menu-item>
+              <a routerLink="/home/users" routerLinkActive="active">Utilisateurs</a>
+            </button>
+            <button mat-menu-item>
+              <a routerLink="/home/profils" routerLinkActive="active">Profil</a>
+            </button>
+          </mat-menu>
+        </li>
+
+        <li *ngIf="!deviceXs">
+          <button mat-button [matMenuTriggerFor]="infoMenu" >
+            <mat-icon>information</mat-icon>
+            Infos
+          </button>
+          <mat-menu #infoMenu="matMenu">
+            <button mat-menu-item>
+              <a routerLink="/home/profDeSorties" routerLinkActive="active">Profils de sortie</a>
+            </button>
+            <button mat-menu-item>
+              <a routerLink="/home/grpCompetences" routerLinkActive="active">Groupe de compétences</a>
+            </button>
+            <button mat-menu-item>
+              <a routerLink="/home/listCompetences" routerLinkActive="active">Gestion des Compétences</a>
+            </button>
+            <button mat-menu-item>
+              <a routerLink="/home/referentiels" routerLinkActive="active">Les Référentiels</a>
+            </button>
+            <button mat-menu-item>
+              <a routerLink="/home/promos" routerLinkActive="active">Promo</a>
+            </button>
+          </mat-menu>
+        </li>
+        <li *ngIf="!deviceXs">
+          <button mat-button>
+            <mat-icon>pin_drop</mat-icon>
+            <a routerLink="/home/promos" routerLinkActive="active">Promo</a>
+          </button>
+        </li>
+        <li>
+          <button mat-button [matMenuTriggerFor]="infoSettings" (click)="logout()">
+            <mat-icon>settings</mat-icon>
+            <span *ngIf="!deviceXs">Paramètres</span>
+          </button>
+          <mat-menu #infoSettings="matMenu">
+            <button mat-menu-item>
+              <a routerLink="/home/users" routerLinkActive="active">About</a>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>logout</mat-icon>
+              <a (click)="logout()">Déconnexion</a>
+            </button>
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="deviceXs">
+    <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+      <ul fxLayout="row" fxLayoutGap="20px">
+        <li>
+          <button mat-button  [matMenuTriggerFor]="personMenu">
+            <mat-icon>people</mat-icon>
+            Users
+          </button>
+          <mat-menu #personMenu="matMenu">
+            <button mat-menu-item>
+              <a routerLink="/home/users" routerLinkActive="active">Utilisateurs</a>
+            </button>
+            <button mat-menu-item>
+              <a routerLink="/home/profils" routerLinkActive="active">Profil</a>
+            </button>
+          </mat-menu>
+        </li>
+        <li>
+          <button mat-button [matMenuTriggerFor]="infoMenu" >
+            <mat-icon>information</mat-icon>
+            Infos
+          </button>
+          <mat-menu #infoMenu="matMenu">
+            <button mat-menu-item>
+              <a routerLink="/home/profDeSorties" routerLinkActive="active">Profils de sortie</a>
+            </button>
+            <button mat-menu-item>
+              <a routerLink="/home/grpCompetences" routerLinkActive="active">Groupe de compétences</a>
+            </button>
+            <button mat-menu-item>
+              <a routerLink="/home/referentiels" routerLinkActive="active">Les Référentiels</a>
+            </button>
+          </mat-menu>
+        </li>
+        <li>
+          <button mat-button>
+            <mat-icon>pin_drop</mat-icon>
+            <a routerLink="/home/promos" routerLinkActive="active">Promo</a>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

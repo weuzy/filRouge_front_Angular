@@ -1,0 +1,70 @@
+<mat-nav-list>
+  <div class="profile-card">
+    <div class="header">
+      <h2>Ousseynou DIOP</h2>
+      <h4>diopp1017@gmail.com</h4>
+    </div>
+    <img src="././assets/me.jpeg" alt="weuzy">
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <mat-list-item [matMenuTriggerFor]="menu">
+    <mat-icon>unfold_more</mat-icon>
+    <a matline><h2 matSubheader>Paramétre</h2></a>
+  </mat-list-item>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/">Accueil</a>
+    </button>
+    <button mat-menu-item>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/promos">Promo</a>
+    </button>
+    <button mat-menu-item>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/users">Utilisateurs</a>
+    </button>
+    <button mat-menu-item>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/profDeSorties">Profils de sortie</a>
+    </button>
+    <button mat-menu-item>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/grpCompetences">Groupe de compétences</a>
+    </button>
+    <button mat-menu-item>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/referentiels">Les référentiels</a>
+    </button>
+  </mat-menu>
+
+
+  <mat-divider></mat-divider>
+
+  <mat-list-item [matMenuTriggerFor]="Menu">
+    <mat-icon>unfold_more</mat-icon>
+    <a matline><h2 matSubheader>Outils</h2></a>
+  </mat-list-item>
+  <mat-menu #Menu="matMenu">
+    <button mat-menu-item>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/frums">
+        <mat-icon>import_contacts</mat-icon>
+        Frums
+      </a>
+    </button>
+    <button mat-menu-item>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/tags">
+        <mat-icon>contact_phone</mat-icon>
+        Tags
+      </a>
+    </button>
+    <button mat-menu-item>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/briefs">
+        <mat-icon>assignment</mat-icon>
+        Briefs
+      </a>
+    </button>
+  </mat-menu>
+
+  <mat-divider></mat-divider>
+
+
+</mat-nav-list>
+
+

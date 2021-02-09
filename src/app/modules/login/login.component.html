@@ -1,0 +1,26 @@
+<mat-card class="mat-elevation-z14">
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submitForm(form.value)">
+      <h2>Se connecter</h2>
+      <mat-error *ngIf="loginInvalid">
+        Le nom d'utilisateur ou le mot de passe n'a pas été reconnu
+      </mat-error>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Nom d'utilisateur" formControlName="username" required>
+        <mat-error>
+          Veuillez fournir un nom d'utilisateur valide
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput type="password" placeholder="Mot de passe" formControlName="password" required>
+        <mat-error>
+          Veuillez fournir un mot de passe valide
+        </mat-error>
+      </mat-form-field>
+      <button mat-stroked-button color="warn"  class="mat-elevation-z6" >
+        <mat-icon class="icon">login</mat-icon>
+        Connexion
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

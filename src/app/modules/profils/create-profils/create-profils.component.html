@@ -1,0 +1,23 @@
+<div class="mat-elevation-z8" *ngIf="profil">
+  <div class="titl">
+    <h1>{{panelTitle}} d'un profil</h1>
+    <div class="clos">
+      <a routerLink="/home/profils" mat-icon-button>
+        <mat-icon>highlight_off</mat-icon>
+      </a>
+    </div>
+  </div>
+  <mat-card class="example-card">
+    <form [formGroup]="myForm" #formulaire="ngForm">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="libelle" [(ngModel)]="profil.libelle" formControlName="libelle">
+        </mat-form-field>
+      </form>
+    <div>
+      <a mat-button [disabled]="formulaire.invalid" color="accent" (click)="saveProfil()"><mat-icon class="mat-18">edit</mat-icon>Save</a>
+      <button mat-flat-button style="color: #6CCAF0" (click)="myForm.reset()"><mat-icon>settings_backup_restore</mat-icon>Reset</button>
+    </div>
+  </mat-card>
+</div>
+
+

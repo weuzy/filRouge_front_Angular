@@ -1,0 +1,35 @@
+table {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 431px;
+  text-align: center;
+  border-bottom: 4px #f44336 solid;
+}
+img {
+  height: 50px;
+  width: 50px;
+}
+th.mat-header-cell {
+  text-align: center;
+  max-width: 300px;
+  color: #6CCAF0;
+  font-weight: bold;
+}
+.titl {
+  background-color: #FFFFFF;
+  padding: 12px;
+  border-left: 8px #f44336 solid;
+}
+h1 {
+  color: #f44336;
+  margin-top: 15px;
+  font-weight: bold;
+}
+.clos {
+  float: right;
+  margin-top: -4rem;
+  color: #f44336;
+}
+
+

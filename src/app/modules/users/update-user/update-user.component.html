@@ -1,0 +1,52 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center">
+  <mat-card class="mat-elevation-z14">
+    <mat-card-header>
+      <mat-card-title><span style="color: #f44336">Modifier un utilisateur</span></mat-card-title>
+      <div class="clos">
+        <a routerLink="/home/users" mat-icon-button>fermer
+          <mat-icon>highlight_off</mat-icon>
+        </a>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+        <img mat-card-avatar style="height: 10rem;width: 10rem;border-radius: 50%; border: 4px #FFFFFF solid" [src]="imageURL" [alt]="myForm.value.prenom">
+      </div>
+      <form class="example-form" [formGroup]="myForm" (ngSubmit)="submit()">
+        <mat-form-field class="full-width-input">
+          <input formControlName="prenom" matInput placeholder="Prénom">
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input formControlName="nom" matInput placeholder="Nom">
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input formControlName="email" matInput placeholder="E-mail">
+        </mat-form-field>
+        <mat-form-field>
+          <ngx-mat-file-input formControlName="avatar" placeholder="photo" accept="image/*" (change)="showPreview($event)" valuePlaceholder="No file selected" required></ngx-mat-file-input>
+          <mat-icon matSuffix color="warn">folder</mat-icon>
+          <mat-error *ngIf="myForm.get('avatar').hasError('maxContentSize')">
+            The total size must not exceed {{myForm.get('avatar')?.getError('maxContentSize').maxSize | byteFormat}} ({{myForm.get('avatar')?.getError('maxContentSize').actualSize
+            | byteFormat}}).
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+          <mat-label>Profil</mat-label>
+          <mat-select>
+            <mat-option [value]="user" *ngFor="let user of Profil">{{user}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            Veuillez sélectionner un profil
+          </mat-error>
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+          <a mat-stroked-button class="mat-elevation-z6" color="accent" routerLink="/home/users"><mat-icon class="mat-18">edit</mat-icon>Save</a>
+          <button mat-stroked-button class="mat-elevation-z6" style="color: #6CCAF0" (click)="myForm.reset()"><mat-icon>settings_backup_restore</mat-icon>Reset</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

@@ -1,0 +1,76 @@
+<div class="mat-elevation-z8" *ngIf="user">
+  <div class="titl">
+    <h1>{{ panelTitle }} d'un utitilisateur</h1>
+    <div class="clos">
+      <a routerLink="/home/users" mat-icon-button>
+        <mat-icon>highlight_off</mat-icon>
+      </a>
+    </div>
+  </div>
+  <mat-card class="example-card">
+    <form [formGroup]="uploadForm" #formulaire="ngForm">
+      <mat-form-field class="full-width-input">
+        <input formControlName="prenom" [(ngModel)]="user.prenom" matInput placeholder="Prénom">
+        <mat-error>
+          Le Prénom est obligatoire!!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input formControlName="nom" [(ngModel)]="user.nom" matInput placeholder="Nom">
+        <mat-error>
+          Le Nom est obligatoire!!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input formControlName="username" [(ngModel)]="user.username" matInput placeholder="Username">
+        <mat-error>
+          Le Nom d'utilisateur est obligatoire!!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input formControlName="email" [(ngModel)]="user.email" matInput placeholder="E-mail">
+        <mat-error>
+          L'email est obligatoire!!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <ngx-mat-file-input formControlName="photo" [(ngModel)]="user.photo" placeholder="photo" accept="image/*" (change)="onFIleSelected($event)" valuePlaceholder="No file selected" required></ngx-mat-file-input>
+        <mat-icon matSuffix color="warn">folder</mat-icon>
+        <mat-error *ngIf="uploadForm.get('photo').hasError('required')">
+          veuillez choisir une photo
+        </mat-error>
+        <mat-error *ngIf="uploadForm.get('photo').hasError('maxContentSize')">
+          The total size must not exceed {{uploadForm.get('photo')?.getError('maxContentSize').maxSize | byteFormat}} ({{uploadForm.get('photo')?.getError('maxContentSize').actualSize
+          | byteFormat}}).
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <mat-label>Profil</mat-label>
+        <mat-select formControlName="profils" [(value)]="user.profil">
+          <mat-option [value]="user"  *ngFor="let user of Profil">{{user}}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          Veuillez sélectionner un profil
+        </mat-error>
+      </mat-form-field>
+
+<!--        <input formControlName="genre" [(ngModel)]="user.genre" matInput placeholder="Genre">-->
+      <div class="misc-bottom-padding">
+        <mat-label>Genre:</mat-label>
+        <br>
+        <mat-radio-group aria-label="Select an option" color="warn" formControlName="genre">
+          <mat-radio-button value="M">M</mat-radio-button>
+          <mat-radio-button value="F">F</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+    </form>
+    <div>
+      <a mat-button [disabled]="formulaire.invalid" (click)="submit()" color="accent" ><mat-icon class="mat-18">edit</mat-icon>Save</a>
+      <button mat-flat-button style="color: #6CCAF0" (click)="uploadForm.reset()"><mat-icon>settings_backup_restore</mat-icon>Reset</button>
+    </div>
+
+  </mat-card>
+</div>

@@ -1,0 +1,25 @@
+<div class="weuz mat-elevation-z8">
+  <div class="titl">
+    <h1>Détails d'un utilisateur </h1>
+    <div class="clos">
+      <a routerLink="/home/users" mat-icon-button>
+        <mat-icon>highlight_off</mat-icon>
+      </a>
+    </div>
+  </div>
+  <div class="content" *ngIf="user">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{user.prenom}} {{user.nom}}</mat-card-title>
+        <mat-card-subtitle>{{user.profil.libelle}}</mat-card-subtitle>
+      </mat-card-header>
+        <img mat-card-image src="data:image/png;base64,{{user.photo}}" alt="me">
+      <mat-card-footer>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <div><b style="text-decoration:underline;">EMAIL</b>: {{user.email}}</div>
+          <div><b style="text-decoration:underline">Téléphone</b>: {{user.telephone}}</div>
+        </div>
+        </mat-card-footer>
+    </mat-card>
+  </div>
+</div>
